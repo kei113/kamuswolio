@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Menggunakan min-height untuk konten yang panjang */
+    margin: 0;
+    padding: 20px 0; /* Menambah padding atas bawah */
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+}
+
+.flag-icon {
+    width: 28px;  /* Sedikit menyesuaikan ukuran ikon bendera */
+    height: auto;
+    vertical-align: middle;
+    margin-bottom: 4px;
+}
+
+h1 {
+    color: #1a73e8;
+    margin-bottom: 5px;
+}
+
+p {
+    color: #5f6368;
+    font-size: 0.9em;
+    margin-top: 0;
+}
+
+.kamus-wrapper {
+    margin-top: 25px;
+}
+
+.bahasa-header {
+    display: flex;
+    justify-content: space-between; /* Mengganti dari space-around ke space-between */
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    font-weight: 600;
+    padding: 0 10px; /* Menambah padding agar tidak terlalu mepet */
+}
+
+/* Style untuk swap-btn sudah dihapus karena elemennya tidak ada lagi */
+
+#input-kata {
+    width: calc(100% - 24px);
+    padding: 12px;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    font-size: 1em;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#input-kata:focus {
+    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 2px #d2e3fc;
+}
+
+#cari-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.1s ease-in-out;
+}
+
+#cari-btn:hover {
+    background-color: #1558b8;
+    transform: scale(1.02);
+}
+
+#cari-btn:active {
+    transform: scale(0.98);
+    background-color: #134fa0;
+}
+
+#hasil-terjemahan {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #e8eaed;
+    border-radius: 8px;
+    min-height: 80px; /* Menyesuaikan tinggi minimum */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #3c4043;
+    font-size: 1.1em;
+    line-height: 1.5; /* Menambah jarak antar baris */
+}
+
+/* Animasi untuk hasil terjemahan */
+@keyframes popInEffect {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(10px);
+    }
+    70% {
+        opacity: 1;
+        transform: scale(1.05) translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.hasil-pop-in {
+    animation: popInEffect 0.3s ease-out forwards;
+}
+
+/* Gaya untuk Tombol Tambah Kata Baru */
+#tampilkan-modal-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #28a745; /* Warna hijau */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#tampilkan-modal-btn:hover {
+    background-color: #218838;
+}
+
+/* Gaya untuk Modal */
+.modal {
+    display: none; /* Awalnya disembunyikan */
+    position: fixed; /* Tetap di posisi yang sama saat scroll */
+    z-index: 1000; /* Tampil di atas semua elemen lain */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Aktifkan scroll jika kontennya panjang */
+    background-color: rgba(0,0,0,0.5); /* Latar belakang semi-transparan */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex; /* Tampilkan modal saat class 'show' ditambahkan */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 25px 30px;
+    border: 1px solid #888;
+    width: 85%;
+    max-width: 450px;
+    border-radius: 10px;
+    position: relative;
+    animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Gaya untuk Form di dalam Modal */
+#form-tambah-kata {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Jarak antar elemen form */
+    margin-top: 15px;
+}
+
+#form-tambah-kata label {
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+}
+
+#form-tambah-kata input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#simpan-kata-btn {
+    padding: 12px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+#simpan-kata-btn:hover {
+    background-color: #1558b8;
+}

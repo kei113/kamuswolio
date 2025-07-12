@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamus Indonesia - Wolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>
+            Kamus Indonesia - Wolio
+            <img src="indonesia.png" alt="Bendera Indonesia" class="flag-icon"> 
+        </h1>
+        <p>Terjemahkan kata dari Bahasa Indonesia ke Bahasa Wolio.</p>
+
+        <div class="kamus-wrapper">
+            <div class="bahasa-header">
+                <span id="bahasa-sumber">Indonesia</span>
+                <span id="bahasa-target">Wolio</span>
+            </div>
+
+            <input type="text" id="input-kata" placeholder="Ketik kata Bahasa Indonesia...">
+            <button id="cari-btn">Cari</button>
+
+            <div id="hasil-terjemahan">
+                <p>Hasil terjemahan akan muncul di sini.</p>
+            </div>
+            
+            <button id="tampilkan-modal-btn">Tambah Kata Baru</button>
+        </div>
+    </div>
+
+    <div id="modal-tambah-kata" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Tambah Kosakata Baru</h2>
+            <form id="form-tambah-kata">
+                <label for="input-indonesia">Kata Indonesia:</label>
+                <input type="text" id="input-indonesia" required>
+
+                <label for="input-wolio">Kata Wolio:</label>
+                <input type="text" id="input-wolio" required>
+
+                <label for="input-pelafalan">Pelafalan:</label>
+                <input type="text" id="input-pelafalan" placeholder="(Opsional)">
+
+                <label for="input-tipe">Tipe Kata:</label>
+                <input type="text" id="input-tipe" placeholder="(Opsional)">
+
+                <button type="submit" id="simpan-kata-btn">Simpan</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="kamus-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
